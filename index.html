@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ㅤ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false;">
+    <div id="overlay" onclick="startSession()">
+        [ ........... ]
+    </div>
+    <div class="noise-container"></div>
+
+    <div class="terminal">
+        <div id="typewriter"></div>
+        <div id="qa-box" style="display: none;">
+            <p id="question-text"></p>
+            <div class="options">
+                <button onclick="nextStep()">예</button>
+                <button onclick="nextStep()">아니요</button>
+                <button onclick="nextStep()">있습니다</button>
+                <button onclick="nextStep()">없습니다</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
