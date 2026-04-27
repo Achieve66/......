@@ -1,9 +1,10 @@
-/* 1. 首先定義字體，注意檔案名大細楷要同你 GitHub 上傳咗嗰個一模一樣 */
+/* 1. 定義字體：確保 url 係 './NorthKorea.TTF'，大細楷跟足 GitHub 列表 */
 @font-face {
     font-family: 'DPRK';
-    src: url('NorthKorea.TTF') format('truetype');
+    src: url('./NorthKorea.TTF') format('truetype');
     font-weight: normal;
     font-style: normal;
+    font-display: swap; /* 確保字體載入中時唔會隱藏文字 */
 }
 
 * {
@@ -21,11 +22,9 @@
 
 body {
     background-color: #000;
-    color: #666; /* 陰暗灰色 */
-    
-    /* 2. 將原本嘅 Courier New 改做你新定義嘅 'DPRK' */
+    color: #666; 
+    /* 2. 套用 DPRK 到全域，確保所有預設文字都食呢隻字 */
     font-family: 'DPRK', 'Courier New', Courier, monospace;
-    
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -33,7 +32,11 @@ body {
     align-items: center;
 }
 
-/* ... 其餘部分保持不變 ... */
+/* 針對顯示韓文內容嘅重點區域 */
+.terminal, #typewriter, #question-text, .options button {
+    /* 3. 強制使用 DPRK 書法體，load 唔到先用系統 serif */
+    font-family: 'DPRK', serif !important;
+}
 
 .terminal {
     width: 85%;
@@ -43,8 +46,25 @@ body {
     word-break: break-all;
     font-size: 2.2rem;
     line-height: 1.5;
-    /* 3. 確保韓文會顯示得好，可以喺呢度再補多句確保 terminal 用呢隻字 */
-    font-family: 'DPRK', serif;
 }
 
-/* ... 剩低嘅 QA-box 同 Button 代碼 ... */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 0.8rem;
+    letter-spacing: 10px;
+    cursor: pointer;
+    /* 連 Overlay 嘅細字都用埋書法體就更神祕 */
+    font-family: 'DPRK', sans-serif;
+}
+
+/* 之後嘅 QA-box 同 Button 代碼保持不變，但記得確保 .options button 都有套用 font-family */
